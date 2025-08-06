@@ -1,10 +1,10 @@
+/* 背景グラデーションを追加 */
+/* イエロー、ブラウン、オレンジを基調にしたグラデーション */
 body {
     font-family: sans-serif;
-    /* 背景グラデーションを追加 */
-　　/* イエロー、ブラウン、オレンジを基調にしたグラデーション */
-　　background: linear-gradient(90deg, #FFDAB9, #F5DEB3, #A0522D, #FF8C00);
+    background: linear-gradient(90deg, #FFDAB9, #F5DEB3, #A0522D, #FF8C00);
     background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite; /* アニメーションを追加 */
+    animation: gradient-animation 15s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;

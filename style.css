@@ -1,6 +1,5 @@
 body {
     font-family: 'Noto Sans JP', sans-serif;
-    /* 背景グラデーションを追加 */
     background: linear-gradient(90deg, #FFDAB9, #F5DEB3, #A0522D, #FF8C00);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
@@ -11,7 +10,6 @@ body {
     margin: 0;
 }
 
-/* 背景グラデーションのアニメーション定義 */
 @keyframes gradient-animation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -21,12 +19,12 @@ body {
 .container {
     width: 100%;
     max-width: 500px;
-    background-color: rgba(255, 255, 255, 0.9); /* 少し透明にして背景が見えるように */
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影を少し強めに */
-    backdrop-filter: blur(5px); /* 背景をぼかす */
-    position: relative; /* パネルを相対的に配置するために追加 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    position: relative;
 }
 
 h1 {
@@ -49,36 +47,52 @@ h1 {
 
 #add-button {
     padding: 10px 20px;
-    background-color: #5C6BC0; /* 色を変更 */
+    background-color: #5C6BC0;
     color: white;
     border: none;
     border-radius: 8px;
     margin-left: 10px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+    transition: background-color 0.3s ease;
 }
 
 #add-button:hover {
     background-color: #3F51B5;
 }
 
-#show-panel-button {
+.buttons-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#show-panel-button, #export-csv-button {
     padding: 10px 20px;
-    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    display: block; /* ブロック要素にして縦に並べる */
-    width: 100%;
-    margin-top: 10px;
     transition: background-color 0.3s ease;
+    flex-grow: 1; /* ボタンの横幅を均等にする */
+}
+
+#show-panel-button {
+    background-color: #4CAF50;
+    margin-right: 10px;
 }
 
 #show-panel-button:hover {
     background-color: #45a049;
+}
+
+#export-csv-button {
+    background-color: #3F51B5;
+}
+
+#export-csv-button:hover {
+    background-color: #3649a5;
 }
 
 #todo-list {
@@ -91,7 +105,6 @@ h1 {
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #eee;
-    /* 新規追加時のアニメーションの初期状態 */
     opacity: 0;
     transform: translateY(10px);
     animation: fadeIn 0.5s ease-in-out forwards;
@@ -155,7 +168,6 @@ h1 {
     border-radius: 8px;
 }
 
-/* 出力パネルの基本スタイル */
 .output-panel {
     position: fixed;
     bottom: 0;
@@ -167,10 +179,9 @@ h1 {
     border-radius: 8px 8px 0 0;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: transform 0.5s ease-out; /* スライドアニメーション */
+    transition: transform 0.5s ease-out;
 }
 
-/* パネルが表示されたときのスタイル */
 .output-panel.is-visible {
     transform: translateX(-50%) translateY(0);
 }
@@ -202,18 +213,27 @@ h1 {
 .panel-content {
     padding: 20px;
     max-height: 300px;
-    overflow-y: auto; /* データが多いときにスクロールできるように */
+    overflow-y: auto;
 }
 
-/* データの表示スタイル */
 .data-item {
     padding: 10px 0;
     border-bottom: 1px dashed #ddd;
+    display: flex;
+    justify-content: space-between; /* QRコードを右に配置 */
+    align-items: center;
 }
 .data-item:last-child {
     border-bottom: none;
 }
+.data-item span {
+    flex-grow: 1;
+}
 .data-item.completed {
     color: #888;
     text-decoration: line-through;
+}
+
+.qrcode {
+    margin-left: 10px;
 }

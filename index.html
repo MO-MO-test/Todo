@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoリスト</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>ToDoリスト</h1>
+        <div id="progress-bar">
+            <span id="progress-text">タスクの進捗状況：0 / 0</span>
+        </div>
         <div class="input-area">
             <input type="text" id="todo-input" placeholder="新しいタスクを入力...">
             <button id="add-button">追加</button>
+        </div>
+        <div class="filter-area">
+            <button id="show-all" class="active">すべて</button>
+            <button id="show-incomplete">未完了</button>
+            <button id="show-completed">完了済み</button>
         </div>
         <ul id="todo-list">
         </ul>

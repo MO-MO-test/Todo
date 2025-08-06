@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const todoInput = document.getElementById('todo-input');
     const addButton = document.getElementById('add-button');
     const todoList = document.getElementById('todo-list');
+    const showPanelButton = document.getElementById('show-panel-button');
+    const closePanelButton = document.getElementById('close-panel-button');
+    const outputPanel = document.getElementById('output-panel');
+    const outputContent = document.getElementById('output-content');
 
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
@@ -35,6 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
             todoList.appendChild(li);
         });
     }
+
+    // 出力パネルにデータを表示する
+    function renderOutputPanel() {
+        outputContent.innerHTML = '';
+        const todos = JSON.parse(localStorage.getItem('todos')) || [];
+        todos.forEach(todo => {
+            const div = document.createElement('div');
+            div.className = `data-item ${todo.completed ? 'completed' : ''}`;
+            const status = todo.completed ? '完了' : '未完了';
+            div.textContent = `${todo.text} - ${status}`;
+            outputContent.appendChild(div);
+        });
+    }
+
+    // パネルを表示する
+    showPanelButton.addEventListener('click', () => {
+        renderOutputPanel(); // パネルにデータを表示
+        outputPanel.classList.add('is-visible');
+    });
+
+    // パネルを閉じる
+    closePanelButton.addEventListener('click', () => {
+        outputPanel.classList.remove('is-visible');
+    });
     
     // 新しいタスクを追加する
     function addTodo() {

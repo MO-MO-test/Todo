@@ -1,7 +1,7 @@
 /* 背景グラデーションを追加 */
 /* イエロー、ブラウン、オレンジを基調にしたグラデーション */
 body {
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     background: linear-gradient(90deg, #FFDAB9, #F5DEB3, #A0522D, #FF8C00);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
@@ -27,6 +27,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影を少し強めに */
     backdrop-filter: blur(5px); /* 背景をぼかす */
+    border-radius: 12px;
 }
 
 h1 {
@@ -131,4 +132,8 @@ h1 {
 
 .toggle-button:hover {
     background-color: #1e88e5;
+}
+
+#add-button, .toggle-button, .delete-button {
+    border-radius: 8px;
 }

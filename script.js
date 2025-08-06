@@ -1,8 +1,3 @@
-/*
- * スクリプトファイル
- * ToDoリストの主要な機能（追加、削除、完了、編集、保存）
- * と、その他インタラクティブな要素（アニメーション、パネル表示）を管理する
- */
 document.addEventListener('DOMContentLoaded', () => {
     const todoInput = document.getElementById('todo-input');
     const addButton = document.getElementById('add-button');
@@ -21,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-    // Todos配列を元にリストをレンダリングする
     function renderTodos() {
         todoList.innerHTML = '';
         const filteredTodos = todos.filter(todo => {
@@ -38,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
             span.className = 'task-text';
             span.textContent = todo.text;
             
-            // タスク編集機能
             span.addEventListener('click', () => {
                 if (!li.classList.contains('editing')) {
                     startEdit(li, todo, index);
@@ -67,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateProgress();
     }
     
-    // タスク編集機能の開始
     function startEdit(li, todo, index) {
         li.classList.add('editing');
         const input = document.createElement('input');
@@ -87,20 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
         input.focus();
     }
 
-    // タスク編集内容の保存
     function saveEdit(input, index) {
         todos[index].text = input.value.trim();
         saveAndRender();
     }
 
-    // 進捗状況の更新
     function updateProgress() {
         const total = todos.length;
         const completed = todos.filter(todo => todo.completed).length;
         progressText.textContent = `タスクの進捗状況：${completed} / ${total}`;
     }
 
-    // タスク完了時の紙吹雪アニメーション
     function launchConfetti() {
         confetti({
             particleCount: 100,
@@ -109,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 出力パネルにデータを表示する
     function renderOutputPanel() {
         outputContent.innerHTML = '';
         const todos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -122,13 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // パネルを表示する
     showPanelButton.addEventListener('click', () => {
         renderOutputPanel();
         outputPanel.classList.add('is-visible');
     });
 
-    // パネルを閉じる
     closePanelButton.addEventListener('click', () => {
         outputPanel.classList.remove('is-visible');
     });
@@ -167,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 絞り込みボタンのクリックイベント
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             filterButtons.forEach(btn => btn.classList.remove('active'));

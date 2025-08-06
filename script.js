@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.getElementById('add-button');
     const todoList = document.getElementById('todo-list');
 
-    // ローカルストレージからタスクを読み込む
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
     // Todos配列を元にリストをレンダリングする
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             todoList.appendChild(li);
         });
     }
-
+    
     // 新しいタスクを追加する
     function addTodo() {
         const text = todoInput.value.trim();
@@ -46,28 +45,28 @@ document.addEventListener('DOMContentLoaded', () => {
             saveAndRender();
         }
     }
-
+    
     // タスクの完了状態を切り替える
     function toggleTodo(index) {
         todos[index].completed = !todos[index].completed;
         saveAndRender();
     }
-
+    
     // タスクを削除する
     function deleteTodo(index) {
         todos.splice(index, 1);
         saveAndRender();
     }
-
+    
     // Todos配列をローカルストレージに保存し、リストを再描画する
     function saveAndRender() {
         localStorage.setItem('todos', JSON.stringify(todos));
         renderTodos();
     }
-
+    
     // ボタンクリックでタスク追加
     addButton.addEventListener('click', addTodo);
-
+    
     // Enterキーでもタスク追加
     todoInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
